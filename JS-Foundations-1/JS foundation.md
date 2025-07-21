@@ -319,7 +319,9 @@ This mechanism allows JavaScript to remain responsive while handling time-consum
 
 Understanding these concepts helps you write more efficient JavaScript and debug performance issues effectively. -->
 
-# Advanced JavaScript Engine & Runtime - Study Notes
+# JavaScript Foundation - 1
+
+## JavaScript Engine & Runtime
 
 ## Table of Contents
 
