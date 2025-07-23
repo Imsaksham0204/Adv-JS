@@ -149,4 +149,40 @@ function sayHello() {
 
 ```
 
+// Funtion scope vs block scope
+
+if(5>4) {
+    var secret = '12345'
+}
+
+console.log(secret);
+
+We are able to access the secret variable outside the scope of the if block. With var it is possible. But if using latest ES6 features, like let and const, then it will be block scoped. 
+or else JS only recognize the functional scope.
+
+
+// IIFE 
+There is a concept of global environment pollution. When multiple variables are declared or defined in the global window(which is not a good practice), the it can conflict with other reserved keywords or maybe multiple scripts are there which will have same variable name. In these cases, original declaration wont be there.
+
+Eg:- 
+<html>
+<body>
+</body>
+<script>var z = 5</script>
+<script>var zzz = 555</script>
+<script>var z = 500</script>
+</hmtl>
+
+The z variable will be overwritten by the 3rd script. 
+
+To avoid these, we can use IIFE's. IIFE is Immediately Invoked Function Expression. These can be defined in the global scope.
+Eg:- 
+(function() {
+    var z = 1000;
+    console.log(z);
+})();
+
+This is working because, the function is written in a function expression i.e., with these brackets (). The JS sees this as a function expression not function decalartion. Remember this, that this will not be hoisted.
+And this function is immediately invoked.
+The variables which will be defined inside this function scope will remain in this local scope only. We can not access them in the global scope which helps to avoid global namespace pollution
 
