@@ -42,3 +42,22 @@ Above the teddy is printed as undefined bcoz of hoisting and sing fun executes a
 
 PS:- Only variable declaration with var will be hoisted, not with let or const.
 In hoisting, the code is not moved to the top. Instead, one pass is made throught the whole JS code, and it assigns the variables in the call stack to reserve the memory.
+
+Here is one complex example of hoisting
+
+var favouriteFood = "Grapes"
+
+var foodThoughts = function () {
+    console.log("Orginal favourite food is: " + favouriteFood);
+    var favouriteFood = "apple"
+    console.log("New favourite food is: " + favouriteFood);
+}
+
+foodThoughts();
+
+O/P :-
+Orginal favourite food is: undefined
+New favourite food is: apple
+
+Why it behaved like this? :- Bcoz, inside the function, again the favouriteFood is hoisted to that function execution context. As we learned previously, each function will have its own execution context, So this function will hoist the favouriteFood variable with undefined. After that it will assign the value to apple
+
