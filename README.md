@@ -14,7 +14,8 @@ They cover advanced concepts, best practices, and real-world patterns essential 
 ## 📚 Topics Covered
 
 1. [JS Foundations 1](1.%20JS-Foundations-1/JS%20foundation.md)
-2. [JS Foundations 2]()
+2. [JS Foundations 2](2.%20JS-Foundations-2/)
+3. [Types in JS](3.%20Types-in-JS/types-in-JS.md)
 
 ---
 
