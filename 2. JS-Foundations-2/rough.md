@@ -49,9 +49,9 @@ Here is one complex example of hoisting
 var favouriteFood = "Grapes";
 
 var foodThoughts = function () {
-  console.log("Orginal favourite food is: " + favouriteFood);
-  var favouriteFood = "apple";
-  console.log("New favourite food is: " + favouriteFood);
+	console.log("Orginal favourite food is: " + favouriteFood);
+	var favouriteFood = "apple";
+	console.log("New favourite food is: " + favouriteFood);
 };
 
 foodThoughts();
@@ -67,29 +67,33 @@ Why it behaved like this? :- Bcoz, inside the function, again the favouriteFood 
 
 ```js
 // Function Expression
-var canada = () => { // This function is defined at run time bcoz of hoisting but it will be undefined
-  console.log("Cold");
+var canada = () => {
+	// This function is defined at run time bcoz of hoisting but it will be undefined
+	console.log("Cold");
 };
 
 // Function Declaration
-function india() { // This function will be initialized at parse time and will be hoisted also
-  console.log("warm");
+function india() {
+	// This function will be initialized at parse time and will be hoisted also
+	console.log("warm");
 }
 
 // Function invocation/Call/Execution
 canada();
 india();
 ```
+
 During the function invocation, it will create a execution context for each function. In that context, we will be provided with this keyword and arguments keyword.
 
 ```js
 function marry(person1, person2) {
-    console.log(arguments);
-    console.log(`${person1} marries to ${person2}`);
+	console.log(arguments);
+	console.log(`${person1} marries to ${person2}`);
 }
 
-marry("Tim","Teena");
+marry("Tim", "Teena");
 ```
+
 {0: Tim, 1: Teena} // here the arguments will be provided in object form.
 Tim marries to Teena
 
@@ -99,22 +103,22 @@ The better way to use the arguments is like this:-
 
 ```js
 function marry(...args) {
-    console.log(args);
-    console.log(`${args[0]} marries to ${args[1]}`);
+	console.log(args);
+	console.log(`${args[0]} marries to ${args[1]}`);
 }
-marry("Tim","Teena");
+marry("Tim", "Teena");
 ```
 
 ["Tim", "Teena"]
 
-OR 
+OR
 
 ```js
 function marry(person1, person2) {
-    console.log(Array.fron(arguments));
-    console.log(`${person1} marries to ${person2}`);
+	console.log(Array.fron(arguments));
+	console.log(`${person1} marries to ${person2}`);
 }
-marry("Tim","Teena");
+marry("Tim", "Teena");
 ```
 
 In modern JS, avoid using the arguments keyword, bcoz it had some complications with previous versions of JS.
@@ -123,48 +127,44 @@ In modern JS, avoid using the arguments keyword, bcoz it had some complications 
 each function execution context will also have variable enviroment. Basically each variable will have the lexical scope
 
 // Scope chain
-Each function execution context is also linked to the global execution context and the parent context also.
-\**will attach a image here*\
-Also if a function is defined in global scope, then that function will be available in the window object. if we expand that function object in window, we will see a [[scope]] object which will be of type global.
-\**will attach a image here*\
-
+Each function execution context is also linked to the global execution context and the parent context also. \*_will attach a image here_\
+Also if a function is defined in global scope, then that function will be available in the window object. if we expand that function object in window, we will see a [[scope]] object which will be of type global. \*_will attach a image here_\
 
 // use strict
 
-Consider this example:- 
+Consider this example:-
 
 function sayHello() {
-    message = "Hello How are you!"
-    console.log(message);
+message = "Hello How are you!"
+console.log(message);
 }
 
 Even thought the message variable is not defined any where, it will print the message. This is because, message will be automatically defined in the global scope. This is wierd behaviour of JS. To avoid these wierd issues, use strict is used. On top of the JS file, give 'use strict' and it will avoid these issues.
 
 ```js
-'use strict'
+"use strict";
 function sayHello() {
-    message = "Hello How are you!"
-    console.log(message); // error will come as message has to be declared first
+	message = "Hello How are you!";
+	console.log(message); // error will come as message has to be declared first
 }
-
 ```
 
 // Funtion scope vs block scope
 
 if(5>4) {
-    var secret = '12345'
+var secret = '12345'
 }
 
 console.log(secret);
 
-We are able to access the secret variable outside the scope of the if block. With var it is possible. But if using latest ES6 features, like let and const, then it will be block scoped. 
+We are able to access the secret variable outside the scope of the if block. With var it is possible. But if using latest ES6 features, like let and const, then it will be block scoped.
 or else JS only recognize the functional scope.
 
-
-// IIFE 
+// IIFE
 There is a concept of global environment pollution. When multiple variables are declared or defined in the global window(which is not a good practice), the it can conflict with other reserved keywords or maybe multiple scripts are there which will have same variable name. In these cases, original declaration wont be there.
 
-Eg:- 
+Eg:-
+
 <html>
 <body>
 </body>
@@ -173,16 +173,206 @@ Eg:-
 <script>var z = 500</script>
 </hmtl>
 
-The z variable will be overwritten by the 3rd script. 
+The z variable will be overwritten by the 3rd script.
 
 To avoid these, we can use IIFE's. IIFE is Immediately Invoked Function Expression. These can be defined in the global scope.
-Eg:- 
+Eg:-
 (function() {
-    var z = 1000;
-    console.log(z);
+var z = 1000;
+console.log(z);
 })();
 
 This is working because, the function is written in a function expression i.e., with these brackets (). The JS sees this as a function expression not function decalartion. Remember this, that this will not be hoisted.
 And this function is immediately invoked.
 The variables which will be defined inside this function scope will remain in this local scope only. We can not access them in the global scope which helps to avoid global namespace pollution
 
+// this keyword
+
+this is a speciall reserved keyword which is a pointer, which refers to the object whose method is invoked.
+Whatever is on the left side of the method call, is the this keyword.
+
+function sayMyName() {
+}
+
+var obj = {
+name: "Jacob",
+sayMyName: sayMyName
+}
+
+var name = "Sunny"
+
+var obj1 = {
+name: "Sam",
+sayMyName: sayMyName
+}
+
+obj.sayMyName(); // this will refer to obj. "Hi Jacob! ..."
+obj1.sayMyName(); // this will refer to obj1, "Hi Sam! ..."
+sayMyName(); // this will refer to window. "Hi Sunny! ... "
+
+How scoping plays a role for this keyword? Arrow fn and normal function
+
+Ex1:-
+
+```js
+const a = function () {
+  //window
+  const b = function () {
+    //window
+    const c = {
+      hi: function () {
+        //c
+      },
+    };
+    c.hi();
+  };
+  b();
+};
+
+a();
+```
+
+OP:-
+window {}
+window {}
+c {}
+
+Ex2:
+
+```js
+const obj = {
+  name: "Billy",
+  sing() {
+    const ab = function () {};
+    ab();
+  },
+};
+```
+
+a obj{}
+b: window
+
+if we use normal functions, they are not lexically bound for this object. means, they will look who is calling that object. In the above example, it is being called inside sing function which is called by obj object in global context.
+
+The above example can be fixed by using arrow function,
+
+```js
+const obj = {
+  name: "Billy",
+  sing() {
+    const ab = () => {};
+    ab();
+  },
+};
+```
+
+// call() apply() bind()
+
+Calling the function a() is same as a.call() and a.apply().
+a() is just short hand for these 2.
+But sometimes using call() and apply() can be usefull
+
+Consider this example:-
+
+```js
+const wizard = {
+  name: "Merlin",
+  health: 50,
+  heal() {
+    return (this.health = 100);
+  },
+};
+
+const archer = {
+  name: "Robin Hood",
+  health: 30,
+};
+
+wizard.heal.call(archer);
+```
+
+calls a method of an object, substituting another object for the current object. meaning, the one object can borrow the method of the another object using call and passing the object in the parameter.
+
+what if we want to pass the params to the function.
+
+lets say the function became like thsi
+heal(num1, num2) {
+return this.health+= num1+num2;
+}
+
+then we can call like this.
+wizard.heal.call(archer,30,50);
+
+The apply method also works exactly same, only diff is that while passing the params, we have to pass as array
+wizard.heal.call(archer,[30,50]);
+
+The bind also works in the same way, but only the diff is that it return the function, not calls that function. It is usefull if we want to call the function later with the context of different object.
+
+// example of using bind() and currying
+
+const multiply = (a,b) => {
+return a \* b;
+}
+
+const multiplyByTwo = multiply.bind(this,2);
+
+console.log(multiplyByTwo(4)) // 8;
+
+// One more example for this keyword to practice
+
+```js
+const a = {
+name: "a",
+say() {
+console.log(this);
+}
+}
+
+const b = {
+name: "b",
+say: return function () {console.log(this)};
+}
+
+const c = {
+name: "c",
+say: return () => {console.log(this)};
+}
+```
+
+a.say() // a obj
+b.say()() // window obj as we learned previously, if function is there it will be dynamically scoped to window obj or the parent obj
+c.say()() // c object, as it is using arrow fn
+
+Solve this:-
+
+```js
+const character = {
+	name: "Simon",
+	getCharacter() {
+		return this.name;
+	},
+};
+const giveMeTheCharacterNOW = character.getCharacter;
+
+//How Would you fix this?
+console.log("?", giveMeTheCharacterNOW()); //this should return 'Simon' bud doesn't
+```
+
+Ans:-
+
+```js
+const character = {
+	name: "Simon",
+	getCharacter() {
+		return this.name;
+	},
+};
+const giveMeTheCharacterNOW = character.getCharacter.bind(character);
+
+//How Would you fix this?
+console.log("?", giveMeTheCharacterNOW()); //this should return 'Simon' bud doesn't
+```
+
+// Context vs Scope
+
+Context is where the function is being invoked, and scope is the visible area of the function where variables and methods are defined.
