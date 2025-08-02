@@ -16,6 +16,7 @@ They cover advanced concepts, best practices, and real-world patterns essential 
 1. [JS Foundations 1](1.%20JS-Foundations-1/JS%20foundation.md)
 2. [JS Foundations 2](2.%20JS-Foundations-2/JS-Foundations-2.md)
 3. [Types in JS](3.%20Types-in-JS/types-in-JS.md)
+4. [The 2 Pillars of JavaScript - Closures and Prototypal Inheritance](4.%20Closures%20and%20prototypal%20inheritance/Closures-proto.md)
 
 ---
 
