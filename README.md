@@ -14,10 +14,10 @@ Perfect for anyone who knows the basics and wants to explore the internals.
 
 ### Topics
 
-1. [JS Foundations 1](1.%20JS-Foundations-1/JS%20foundation.md)
-2. [JS Foundations 2](2.%20JS-Foundations-2/JS-Foundations-2.md)
-3. [Types in JS](3.%20Types-in-JS/types-in-JS.md)
-4. [Closures & Prototypal Inheritance](4.%20Closures%20and%20prototypal%20inheritance/Closures-proto.md)
+1. [JS Foundations 1](docs/1.%20JS-Foundations-1/JS%20foundation.md)
+2. [JS Foundations 2](docs/2.%20JS-Foundations-2/JS-Foundations-2.md)
+3. [Types in JS](docs/3.%20Types-in-JS/types-in-JS.md)
+4. [Closures & Prototypal Inheritance](docs/4.%20Closures%20and%20prototypal%20inheritance/Closures-proto.md)
 
 ---
 
