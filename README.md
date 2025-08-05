@@ -18,6 +18,7 @@ Perfect for anyone who knows the basics and wants to explore the internals.
 2. [JS Foundations 2](docs/2.%20JS-Foundations-2/JS-Foundations-2.md)
 3. [Types in JS](docs/3.%20Types-in-JS/types-in-JS.md)
 4. [Closures & Prototypal Inheritance](docs/4.%20Closures%20and%20prototypal%20inheritance/Closures-proto.md)
+5. [OOP's - Object Oriented Programmin](docs/5.%20Oops/Oops.md)
 
 ---
 
