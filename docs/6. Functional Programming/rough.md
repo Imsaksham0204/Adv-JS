@@ -146,3 +146,79 @@ const makePositive = (num) => Math.abs(num);
 const multiplyBy3AndAbsolute = compose(multiplyBy3, makePositive);
 multiplyBy3AndAbsolute(-50);
 ```
+
+Generally, developers dont use compose and pipe like this. Very good npm packages are avaialable in the market like ramdaJS or lodash
+
+
+Now here is a small exercise to see how functional programming is actually used in real life. The functions are pure, and data is immutable
+
+```js
+const user = {
+  name: "Kim",
+  active: true,
+  cart: [],
+  purchases: []
+}
+
+// Implement a cart feature: 
+// 1. Add item to cart
+// 2. Add 3% tax to item in cart
+// 3. Buy Item: Cart -> purchases
+// 4. Empty Cart
+
+const compose = (f,g) => (...args) => f(g(...args));
+
+const purchaseItem = (...fns) => {
+  return fns.reduce(compose)
+}
+
+const addItemToCart = (user,item) => {
+  return {...user, cart: [...user.cart, item]};
+}
+
+const addTaxToItem = (user) => {
+  const {cart} = user;
+  const updatedCart = cart.map((item) => {
+    return {
+      itemName: item.itemName,
+      price: item.price + 0.3 * item.price
+    }
+  })
+  
+  return {...user,cart:updatedCart};
+}
+
+const buyItems = (user) => {
+  const newPurchases = [...user.cart];
+  return {...user, purchases: [...user.purchases,...newPurchases]};
+}
+
+const emptyCart = (user) => {
+  return {...user,cart:[]}
+}
+
+purchaseItem(
+  emptyCart,
+  buyItems,
+  addTaxToItem,
+  addItemToCart
+)(user,{itemName: "Laptop", price:2000})
+
+console.log(user)
+```
+
+The goal of developers should always be to write code which is:-
+clear + understandable
+Easy to extend
+Easy to maintain
+memory efficient
+DRY
+
+
+
+OOP vs FP
+
+Composition vs inheritance
+
+-> Inheritance is the ingeriting the properties of parent class to child class whereas composition is to compose multiple functions into one function as seen above 
+Generally composition is taken over inheritance by the developers. But it also depends what we want to do
