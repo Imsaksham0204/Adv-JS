@@ -20,6 +20,8 @@ Perfect for anyone who knows the basics and wants to explore the internals.
 4. [Closures & Prototypal Inheritance](docs/4.%20Closures%20and%20prototypal%20inheritance/Closures-proto.md)
 5. [OOP's - Object Oriented Programmin](docs/5.%20Oops/Oops.md)
 6. [Functional Programming](docs/6.%20Functional%20Programming/functional-Programming.md)
+7. [Async JS](docs/7.%20Async%20JS/asyncJS1.md)
+8. [Modern JS Techniques](docs/8.%20Modern%20JS%20Techniques/Modern%20JS%20Techniques.md)
 
 ---
 
